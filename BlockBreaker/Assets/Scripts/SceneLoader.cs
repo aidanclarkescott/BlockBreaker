@@ -22,4 +22,8 @@ public class SceneLoader : MonoBehaviour {
     public void QuitGame() {
         Application.Quit();
     }
+
+    public void ReloadScene() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

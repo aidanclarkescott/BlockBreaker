@@ -10,10 +10,12 @@ public class GameStatus : MonoBehaviour {
     [SerializeField] int pointsPerBlockDestroyed = 10;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] bool isAutoPlayEnabled;
+    SceneLoader loader;
     #endregion
 
     #region State Variables
     [SerializeField] int currentScore = 0;
+    [SerializeField] int currentLevelScore = 0;
     #endregion
 
     private void Awake() {
@@ -29,6 +31,7 @@ public class GameStatus : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         scoreText.text = currentScore.ToString();
+        loader = FindObjectOfType<SceneLoader>();
     }
 
     // Update is called once per frame
@@ -37,8 +40,12 @@ public class GameStatus : MonoBehaviour {
     }
 
     public void AddToScore() {
-        currentScore += pointsPerBlockDestroyed;
-        scoreText.text = currentScore.ToString();
+        currentLevelScore += pointsPerBlockDestroyed;
+        scoreText.text = currentLevelScore.ToString();
+    }
+
+    public void SetEndOfLevelScore() {
+        currentScore = currentLevelScore;
     }
 
     public void ResetGameStatus() {
@@ -48,5 +55,11 @@ public class GameStatus : MonoBehaviour {
 
     public bool IsAutoPlayEnabled() {
         return isAutoPlayEnabled;
+    }
+
+    public void ReloadLevel() {
+        currentLevelScore = currentScore;
+        scoreText.text = currentScore.ToString();
+        loader.ReloadScene();
     }
 }

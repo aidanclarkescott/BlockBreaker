@@ -140,6 +140,7 @@ MonoBehaviour:
   collisionSounds:
   - {fileID: 8300000, guid: 6831f39e8703349f891f13fda1fc751f, type: 3}
   - {fileID: 8300000, guid: b0e1233170b454bacb7fd919c64d64c7, type: 3}
+  randomFactor: 1
 --- !u!82 &3179324357767761407
 AudioSource:
   m_ObjectHideFlags: 0
