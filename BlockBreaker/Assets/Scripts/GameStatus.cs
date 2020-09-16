@@ -62,4 +62,5 @@ public class GameStatus : MonoBehaviour {
         scoreText.text = currentScore.ToString();
         loader.ReloadScene();
     }
+
 }
